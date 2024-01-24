@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+说明文档： 数学公司使用说明
+
+作者： ljk
+日期： 2023/12/07
+
+用法：
+  python script.py [参数1] [参数2]
+
+示例：
+  python script.py value1 value2
+"""
 
 # math
 def math_demo():
@@ -78,16 +90,7 @@ def sorted_test():
     print("sorted:", L)  
     print("sorted:", sorted(L))  
 
-# 装饰器
-def log(func):
-    def wrapper(*args, **kw):
-        print('call %s():' % func.__name__)
-        return func(*args, **kw)
-    return wrapper
 
-@log
-def now():
-    print('2015-3-25')
 
 #main
 if __name__ == '__main__':
@@ -99,4 +102,4 @@ if __name__ == '__main__':
     #reduce_test()
     #filter_test()
     #sorted_test()
-    now()
+    

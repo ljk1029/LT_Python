@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 """
 说明文档： log和调试使用说明
 
@@ -13,17 +12,6 @@
 示例：
   python script.py value1 value2
 """
-
-def trys_demo():
-    try:
-        print('try...')
-        r = 10 / 0
-        print('result:', r)
-    except ZeroDivisionError as e:
-        print('except:', e)
-    finally:
-        print('finally...')
-        print('END')
 
 import logging
 # 日志设置
@@ -44,8 +32,7 @@ def configure_logging(log_file_path):
     # 将处理程序添加到记录器
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
-
-
+    
 def log_demo():
     # 配置日志，将日志写入到文件 'my_log.log'
     configure_logging('my_log.log')
@@ -60,8 +47,19 @@ def log_demo():
     logging.info('n = %d' % n)
 
 
+# 装饰器
+def log(func):
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+
+@log
+def now():
+    print('2015-3-25')
+
    
 # main
 if __name__ == '__main__':
-    trys_demo()
     log_demo()
+    now()

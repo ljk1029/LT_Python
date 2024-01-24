@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 """
 说明文档： 图像处理使用说明
 
@@ -22,8 +21,6 @@ def pillow_test():
     print(im.format, im.size, im.mode)  
     im.thumbnail((200, 100))
     im.save('thumb.jpg', 'JPEG')
-
-
 
 
 # main

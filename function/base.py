@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-' a print module '
+' base fuction module '
 
 __author__ = 'ljk'
-
-
 
 
 # print使用

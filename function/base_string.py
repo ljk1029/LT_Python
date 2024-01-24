@@ -1,9 +1,21 @@
 #-*- coding:utf-8 -*-
+"""
+说明文档： 字符串操作使用说明
+        正则匹配使用说明
+
+作者： ljk
+日期： 2023/12/07
+
+用法：
+  python script.py [参数1] [参数2]
+
+示例：
+  python script.py value1 value2
+"""
+
 #split(":")[-1]  以:分割倒数第一元素
 #strip() 去掉二端空格
 #strip(“#”) 去掉二端的#号
-
-
 
 
 # 打印

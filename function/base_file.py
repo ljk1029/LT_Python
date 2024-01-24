@@ -1,8 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+说明文档：
+
+作者： ljk
+日期:  2024/01/23
+
+用法：
+  python script.py [参数1] [参数2]
+
+示例：
+  python script.py value1 value2
+
+功能：
+  文件操作demo
+"""
+
 import os
-import sys
-from datetime import datetime
+
+
 
 # 文件打开
 def file_open(path):
@@ -33,19 +49,6 @@ def os_demo():
     # 删掉一个目录:
     os.rmdir(dir_path)
 
-#命令行参数
-def sys_demo():
-    args = sys.argv
-    if len(args)==1:
-        print('Hello, world!')
-    elif len(args)==2:
-        print('Hello, %s!' % args[1])
-    else:
-        print('Too many arguments!')
-
-def time_demo():
-    now = datetime.now() # 获取当前 datetime
-    print(now)
 
 # main
 if __name__ == '__main__':
@@ -53,6 +56,4 @@ if __name__ == '__main__':
     file_open(path)
     path_add()
     os_demo()
-    sys_demo()
-    time_demo()
     

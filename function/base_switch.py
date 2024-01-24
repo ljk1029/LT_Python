@@ -1,6 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+说明文档： 选择分支使用说明
 
+作者： ljk
+日期： 2023/12/07
+
+用法：
+  python script.py [参数1] [参数2]
+
+示例：
+  python script.py value1 value2
+"""
 
 # if选择
 def if_demo(number = 1)->str:
@@ -33,8 +44,6 @@ def while_demo()->int:
         n = n - 2
     print(sum)
     return sum
-
-
 
 
 # main
