@@ -3,6 +3,7 @@
 
 ## API
     https://docs.python.org/zh-cn/3/
+    https://www.liaoxuefeng.com/wiki/1016959663602400
 
 ## 提交说明
     -feat: 新功能（feature）
