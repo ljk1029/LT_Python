@@ -6,27 +6,21 @@ import sys
 import subprocess
 
 
-ip_A = "172.31.3.80"
-ip_B = "172.31.3.81"
+ip_add    = "127.0.0.1"
+user_name = "lixiang"
 
 
 def usage():
     print("用法：")
-    print("  {0} [-t]".format(sys.argv[0]))
-    print("  -t  A: 登录soc A")
-    print("  -t   : 登录soc B")
+    print("  {0} ".format(sys.argv[0]))
+    print("  : 登录")
     print(" ")
 
-
-def ssh_remote(ip):
-    subprocess.call(["ssh", "-l", "liauto", ip])
+def ssh_remote(ip, name):
+    subprocess.call(["ssh", "-l", name, ip])
 
 usage()
 #exit(0)
 
-if len(sys.argv) >= 2 and sys.argv[1] == 'A':
-    print("ssh soc A")
-    ssh_remote(ip_A)
-else:
-    print("ssh remote B")
-    ssh_remote(ip_B)
+if __name__ == '__main__':
+    ssh_remote(ip_add, user_name)

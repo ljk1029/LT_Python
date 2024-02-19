@@ -26,5 +26,5 @@ def curl_get_test(path):
 #main
 if __name__ == '__main__':
     curl_test('https://www.baidu.com')
-    print("[------gut curl------]")
+    print("[------gut curl-----]")
     curl_get_test('https://www.baidu.com')

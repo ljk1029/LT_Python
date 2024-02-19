@@ -10,7 +10,7 @@ import pyautogui
 scheduler = sched.scheduler(time.time, time.sleep)
 
 # 定义一个函数，用于执行点击操作
-def automate_feishu_click():
+def automate_click():
     # 假设飞书应用的按钮在屏幕上的位置是(100, 200)
     button_position = (100, 200)
     # 移动鼠标到指定位置
@@ -37,7 +37,7 @@ def get_mouse_position():
 
 if __name__ == '__main__' :
     # 在5秒后执行自动点击
-    setup_schedule(5, automate_feishu_click)
+    setup_schedule(5, automate_click)
     # 运行调度器
     scheduler.run()
     # 鼠标触发
