@@ -38,6 +38,7 @@ def string_split():
     print("拆分后的结果[0]:",  split_result[0])
     print("拆分后的结果[1]:",  split_result[1])
     print("拆分后的结果[-1]:", split_result[-1])
+    print("拆分后的结果[:-1]:", split_result[:-1])
 
 # 过滤
 def string_strip():
