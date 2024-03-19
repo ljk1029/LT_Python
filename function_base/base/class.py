@@ -12,6 +12,7 @@
 示例：
   python script.py value1 value2
 """
+from base import method_decorator as bm
 
 # 私有变量
 # 实例的变量名如果以__开头，就变成了一个私有变量private，只有内部可以访问，外部不能访问
@@ -58,6 +59,7 @@ class Child(Parent):
 
 
 # 类测试
+@bm
 def class_com():
     # 私有变量测试
     bart = Student('Bart Simpson', 59)
@@ -66,6 +68,7 @@ def class_com():
     lisa.print_score()
 
 # 继承测试
+@bm
 def class_inherit():
     animal = Animal("Animal")
     dog    = Dog("Dog")
@@ -76,6 +79,7 @@ def class_inherit():
     print("type:", type(dog))
 
 # 共享变量测试
+@bm
 def class_var():
     # 共有变量测试
     parent_a = Parent("Parent_A")

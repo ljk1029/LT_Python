@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+'function demo'
+
 # 装饰器使用
 def my_decorator(func):
     def wrapper():
@@ -24,8 +26,9 @@ def my_log(func):
 def log_time():
     print('2015-3-25')
 
+# 与C++不同是，默认传参多次调用是同一个，不使用默认参数每次都新参数
 # 默认值指向可变对象
-def add_end_a(L=['abs'], B=None)->list:
+def add_end_a(L=[], B=None)->list:
     L.append('END')
     if B is None:
         B = []

@@ -21,6 +21,8 @@ def json_demo():
     json_str = '{"age": 20, "score": 88, "name": "Bob"}'
     print("json转换:", json.loads(json_str))
 
+
+
 # base64用法
 import base64
 def base64_demo():
@@ -30,6 +32,8 @@ def base64_demo():
     B = base64.b64decode(Q)
     print("enbsse64转换:", L, A)
     print("debsse64转换:", Q, B)
+
+
 
 # 数据哈希用法
 import hashlib
@@ -43,7 +47,34 @@ def hash_demo():
     sha1.update(L.encode('utf-8'))
     print("sha1计算:", sha1.hexdigest())
 
+
+# yaml使用
+import yaml
+def yaml_demo():
+    yaml_string = """
+    a: 1
+    b: 2
+    c:
+      - foo
+      - bar
+      - baz
+    """
+    data = yaml.safe_load(yaml_string)
+    print("yaml解析: ",data)
+
+    data = {
+        'a': 1,
+        'b': 2,
+        'c': ['apple', 'banana', 'cherry']
+    }
+    yaml_string = yaml.dump(data)
+    print("yaml生成: ", yaml_string)
+    with open('output.yaml', 'w') as file:
+        yaml.dump(data, file)
+
+# main
 if __name__ == '__main__':
     json_demo()
     base64_demo()
     hash_demo()
+    yaml_demo()
