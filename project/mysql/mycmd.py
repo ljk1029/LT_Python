@@ -28,7 +28,7 @@ class MyCommand:
         self.passwd = paras[3]
         self.log('init:', 'ip', self.ip, 'port', self.port, 'uder', self.user, 'passwd', self.passwd)
 
-    # change_init() 恢复默认
+    # 恢复默认参数
     def change_init(self, ip:str='127.0.0.1', port:int=22, user:str='lixiang', passwd:str='0'):
         self.ip   = ip
         self.port = port
@@ -36,15 +36,17 @@ class MyCommand:
         self.passwd = passwd
         self.log(f'change: {self.user}@{self.ip}:{self.port}  {self.passwd}')
 
-    # paramiko使用
+    # paramiko连接检查
     def test_connection(self):
         transport = self.connection.get_transport() if self.connection else None
         return transport and transport.is_active()
 
+    # paramiko连接断开
     def close_connection(self):
         self.connection.sftp.close()
         self.connection.close()
 
+    # paramiko连接建立
     def open_connection(self, ip, port, username, passwd):
         self.connection = paramiko.SSHClient()
         self.connection.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -60,8 +62,8 @@ class MyCommand:
         return self.connection
 
     # paramiko 命令行远程使用
-    def connet_remote_cmd(self, cmd, ip=None, port=None, username=None, passwd=None):
-        self.log('connet_remote_cmd:', cmd, ', ip:', ip)
+    def get_result_connet_cmd(self, cmd, ip=None, port=None, username=None, passwd=None):
+        self.log('get_result_connet_cmd:', cmd, ', ip:', ip)
         if ip :
             self.open_connection(ip, port, username, passwd)
         else :
@@ -77,20 +79,29 @@ class MyCommand:
         self.log('cmd_ret:',output)
         return output
 
+    # 远程命令获取结果
     def get_result_remote_cmd(self, cmd, ip, username):
         remote_cmd = f'{self.sshcmd} {username}@{ip} {cmd}'
+        self.log('get_result_remote_cmd:', remote_cmd)
         return self.exe_subprocess_popenE(remote_cmd)
 
+    # 本地命令获取结果
     def get_result_local_cmd(self, cmd):
         self.log('get_result_local_cmd:', cmd)
         return self.exe_subprocess_run(cmd)
 
+    # os执行命令
     def exe_os_system_cmd(self, cmd)->bool:
         res = os.system(cmd)
         self.log('ret_cmd:', res)
         return res
+    
+    # scp执行命令
+    def exe_scp_cmd(self, saddr, daddr, ip, username):
+        scp_cmd = f'scp -r {saddr} {username}@{ip}:{daddr}'
+        self.exe_subprocess_run(scp_cmd)
 
-    # subprocess run  shell=True设置为shell启动
+    # shell=True设置为shell启动
     def exe_subprocess_run(self, cmd:str)->(str, int):
         try:
             result = subprocess.run(cmd,
@@ -108,12 +119,13 @@ class MyCommand:
             self.log('ret_cmd:', result.stdout)
             return result.stdout, returncode
         
+    # 
     def exe_subprocess_popen(self, cmd):
         subprocess.Popen(cmd, 
                         stderr=subprocess.PIPE, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                         shell=True, text=True, preexec_fn=os.setsid)
         
-    # subprocess popen preexec_fn=os.setsid新开会话
+    # preexec_fn=os.setsid新开会话
     def exe_subprocess_popenE(self, cmd:str):
         result = subprocess.Popen(cmd,
                                   stderr=subprocess.PIPE, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
@@ -128,7 +140,3 @@ class MyCommand:
             self.log('ret_err:', stderr)
             return stderr, returncode
 
-    # scp
-    def exe_scp(self, s_addr, d_addr):
-        scp_cmd = f'scp -r {s_addr} {self.user}@{self.ip}:{d_addr}'
-        self.exe_subprocess_run(scp_cmd)
