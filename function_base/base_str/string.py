@@ -17,12 +17,12 @@
 #split(":")[-1]  以:分割倒数第一元素
 #strip() 去掉二端空格
 #strip(“#”) 去掉二端的#号
-
+import re
 
 # 连接
-def string_connect(pub="1234", sub:str='abcd', index:int=0):
+def string_link(pub="1234", sub:str='abcd', index:int=0):
     # 连接
-    print(  "连接:" + pub + "---" + sub + "---" + "topic" + str(index))
+    print(  "连接:" + pub + "---" + sub  + str(index))
     # 转字符
     print( f"转换:{pub}---{sub}---")
     print( ("转换:{}---{}---").format(pub, sub))
@@ -53,7 +53,6 @@ def string_strip():
 
 # 正则
 def string_regular():
-    import re
     log_data = """
     01-25 14:03:28.156 793252 793253 I EXE-TASK for Performance: Process: user_cpu:957, sys_cpu:93, total_cpu:109506067, memory:275697664
     01-25 14:03:28.156 793252 793253 I EXE-TASK for Performance: Process: user_cpu:956, sys_cpu:94, total_cpu:109506066, memory:275697667
@@ -86,7 +85,7 @@ def string_regular():
 
 # main
 if __name__ == '__main__':
-    string_connect()
+    string_link()
     string_split()
     string_strip()
     string_regular()

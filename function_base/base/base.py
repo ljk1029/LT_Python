@@ -18,7 +18,8 @@ def method_decorator(method):
         return result  # 返回函数执行的结果
     return wrapper
 
-class base_type:
+
+class BaseType:
     def method_decorator(method):
         def wrapper(self, *args, **kwargs):
             print(f"[{method.__name__}测试]:")
@@ -27,7 +28,7 @@ class base_type:
 
     # print使用
     @method_decorator
-    def print_demo(self):
+    def demo_print(self):
         print(b'ABC'.decode('ascii'))
         str_z = 'ABC'
         str_b = str_z.encode('ascii')
@@ -48,9 +49,10 @@ class base_type:
 
     # list使用
     @method_decorator
-    def list_demo(self)->list:
+    def demo_list(self)->list:
         print("[list测试]:")
         list_name = ['Michael', 'Bob', 'Tracy']
+        # pop
         print("list:", list_name)
         print("list:", list_name.pop())
         print("list:", list_name.pop(1))
@@ -65,7 +67,7 @@ class base_type:
 
     # tuple使用, 一旦初始化就不能修改
     @method_decorator
-    def tuple_demo(self)->tuple:
+    def demo_tuple(self)->tuple:
         tuple_name = ('Michael', 'Bob', 'Tracy')
         print("tuple:", tuple_name)
         # 防止只有一个元素，歧义
@@ -75,7 +77,7 @@ class base_type:
 
     # dict使用
     @method_decorator
-    def dict_demo(self)->dict:
+    def demo_dict(self)->dict:
         dict_name = {'Michael': 95, 'Bob': 75, 'Tracy': 85}
         print("dict:", dict_name)
         print("dict:", dict_name['Michael'])
@@ -87,11 +89,13 @@ class base_type:
         # pop
         print("dict:", dict_name.pop('Bob'))
         print("dict:", dict_name)
+        # get不存在就返回默认值
+        print("dict:", dict_name.get('Bob', -1))
         return dict_name
 
     # set使用 元素不能重复
     @method_decorator
-    def set_demo(self)->set:
+    def demo_set(self)->set:
         set_num = set([1, 1, 2, 2, 3, 3])
         print("set:", set_num)
         set_num.add(4)
@@ -102,7 +106,7 @@ class base_type:
 
     # str使用
     @method_decorator
-    def str_demo(self)->str:
+    def demo_str(self)->str:
         str_a = 'abcD'
         print("str:", str_a)
         print("str:", str_a.replace('a', 'A'))
@@ -111,7 +115,8 @@ class base_type:
         return str_a   
 
     # 类型转换
-    def type_test(self):
+    @method_decorator
+    def test_type(self):
         print("类型转换:", int('123')) 
         print("类型转换:", int(12.34))
         print("类型转换:", float('12.34'))
@@ -125,12 +130,12 @@ class base_type:
 
 # main
 if __name__ == '__main__':
-    B = base_type()
-    B.print_demo()
-    B.list_demo()
-    B.tuple_demo()
-    B.dict_demo()
-    B.set_demo()
-    B.str_demo()
-    B.type_test()
+    basetype = BaseType()
+    basetype.demo_print()
+    basetype.demo_list()
+    basetype.demo_tuple()
+    basetype.demo_dict()
+    basetype.demo_set()
+    basetype.demo_str()
+    basetype.test_type()
 

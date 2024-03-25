@@ -23,3 +23,4 @@
     
     1、问题1：若ssl问题则显示加载
     pyinstaller --hidden-import=_ssl ssh_win.py 
+

@@ -13,6 +13,32 @@
   python script.py value1 value2
 """
 
+def json_extern():
+  # Python 字典
+  data = {
+      "name": "John Doe",
+      "age": 30,
+      "isEmployed": True
+  }
+
+  # 将 Python 对象转换为 JSON 字符串
+  json_string = json.dumps(data)
+  print('json:', json_string)
+
+  # 非空格
+  json_string_pretty = json.dumps(data, indent=4)
+  print('json:', json_string_pretty)
+
+  data_with_non_ascii = {
+      "name": "Jöhn Döe"
+  }
+
+  # 非ASCII
+  json_string_non_ascii = json.dumps(data_with_non_ascii, ensure_ascii=False)
+  print('json ascii:', json_string_non_ascii)
+  json_string_non_ascii = json.dumps(data_with_non_ascii)
+  print('json ascii:', json_string_non_ascii)
+
 # json用法
 import json
 def json_demo():
