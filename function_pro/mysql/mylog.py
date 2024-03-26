@@ -16,7 +16,7 @@ class MyLogger:
     def __init__(self, level='INFO', write_to_file=False, file_path='mylog.log'):
         self.level = level
         self.write = write_to_file
-        self.path = file_path
+        self.path   = file_path
         self.levels = {'DEBUG': 10, 'INFO': 20, 'WARNING': 30, 'ERROR': 40, 'CRITICAL': 50}
 
     # 单日志
